@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
       displayMultiplyQuestion(num1, num2);
     } else if (gameType === "subtract") {
       displaySubtractQuestion(num1, num2);
+    } else if (gameType === "division") {
+      displayDivisionQuestion(num1, num2);
     } else {
       alert(`Unknown game type: ${gameType}`);
       throw `Unknown game type: ${gameType}. Aborting!`;
@@ -86,7 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
       return [operand1 * operand2, "multiply"];
     } else if (operator === "-") {
       return [operand1 - operand2, "subtract"];
-    } else {
+    } else if (operator === "/") {
+        return [operand1 / operand2, "division"];
+        } else {
       alert(`Unimplemented operator ${operator}`);
       throw `Unimplemented operator ${operator}. Aborting!`;
     }
@@ -130,7 +134,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function displayDivisionQuestion(operand1, operand2) {
-    // This function will display a division question
-    console.log(`What is ${operand1} / ${operand2}?`);
+    document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
+    document.getElementById("operand2").textContent = operand1 > operand2 ? operand2 : operand1;
+    document.getElementById("operator").textContent = "/";
   }
 });
